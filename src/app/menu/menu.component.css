@@ -2,6 +2,7 @@ header {
     background-color: var(--containerColor);
     height: 8em;
     border-bottom: 1px black solid;
+    padding-bottom: 0.5em;
 }
 header, div {
     display: flex;
@@ -11,6 +12,10 @@ div {
     margin-right: 3em;
     justify-content: space-around;
 }
+a {
+    text-decoration: none;
+    margin: 0;
+}
 h1, h2 {
     color: white;
     -webkit-text-stroke: 1px;
@@ -18,13 +23,16 @@ h1, h2 {
 }
 h1 {
     font-size: var(--fontSizeLargest);
-    margin-left: 1.5em;
+    margin-left: 0.75em;
+    margin-right: 0.75em;
     margin-top: 0.25em;
 }
 h2 {
     font-size: var(--fontSizeLarge);
-    margin-right: 2em;
+    margin-left: 0.75em;
+    margin-right: 0.75em;
 }
-h2:hover {
+a:hover {
     text-decoration: underline;
+    background-color: var(--highLightColor);
 }
