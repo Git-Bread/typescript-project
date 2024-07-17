@@ -13,3 +13,10 @@ body {
 p, label {
     font-size: var(--fontSizeNormal);
 }
+#wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+#contentWrap {
+    padding-bottom: 5em; 
+}

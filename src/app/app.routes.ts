@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { IndexComponent } from '../app/index/index.component'
+import { CoursesComponent } from './courses/courses.component'
 
 export const routes: Routes = [
-    {path: "", component: IndexComponent}
+    {path: "", component: CoursesComponent}
 ];

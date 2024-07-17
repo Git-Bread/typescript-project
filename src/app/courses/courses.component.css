@@ -5,11 +5,12 @@ div {
 }
 input {
     width: 100%;
+    font-size: var(--fontSizeNormal);
 }
 section {
     border: solid 1px gray;
     width: 80%;
     margin: auto;
     margin-top: 1em;
-    min-height: 48vh;
+    min-height: 75vh;
 }
