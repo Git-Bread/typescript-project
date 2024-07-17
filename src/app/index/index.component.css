@@ -1,0 +1,15 @@
+div {
+    margin: auto;
+    width: 35%;
+    margin-top: 1em;
+}
+input {
+    width: 100%;
+}
+section {
+    border: solid 1px gray;
+    width: 80%;
+    margin: auto;
+    margin-top: 1em;
+    min-height: 48vh;
+}

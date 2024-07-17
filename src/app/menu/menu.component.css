@@ -1,0 +1,30 @@
+header {
+    background-color: var(--containerColor);
+    height: 8em;
+    border-bottom: 1px black solid;
+}
+header, div {
+    display: flex;
+}
+div {
+    margin: auto;
+    margin-right: 3em;
+    justify-content: space-around;
+}
+h1, h2 {
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+}
+h1 {
+    font-size: var(--fontSizeLargest);
+    margin-left: 1.5em;
+    margin-top: 0.25em;
+}
+h2 {
+    font-size: var(--fontSizeLarge);
+    margin-right: 2em;
+}
+h2:hover {
+    text-decoration: underline;
+}

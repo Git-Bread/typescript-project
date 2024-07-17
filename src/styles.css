@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --containerColor: #f4b738;
+    --fontSizeNormal: 1.4em;
+    --fontSizeLarge: 3em;
+    --fontSizeLargest: 5em;
+}
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+    margin: 0;
+}
+p, label {
+    font-size: var(--fontSizeNormal);
+}
