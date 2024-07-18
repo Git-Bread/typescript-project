@@ -38,4 +38,10 @@ export class CoursesComponent {
   search(){
     this.content = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive);
   }
+
+  advancedView() {
+    }
+  expandedView() {
+    let table1: any = document.getElementsByClassName("table1");
+  }
 }

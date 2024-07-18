@@ -16,3 +16,9 @@ section {
     overflow: scroll;
     max-height: 100vh;
 }
+.expandedView {
+    display: none;
+}
+.advancedView {
+    display: none;
+}
