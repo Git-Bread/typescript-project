@@ -3,4 +3,14 @@
     <input type="search" id="courseSearch">
 </div>
 <section id="courseContainer">
+    <thead>
+        <td>Kurskod:</td>
+        <td>Namn:</td>
+        <td >Progression:</td>
+    </thead>
+    <tbody *ngFor="let courseCode of content; let i = index;">
+        <td>{{content[i].courseCode}}</td>
+        <td>{{content[i].subjectCode}}</td>
+        <td>{{content[i].progression}}</td>
+    </tbody>
 </section>

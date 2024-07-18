@@ -36,3 +36,6 @@ a:hover {
     text-decoration: underline;
     background-color: var(--highLightColor);
 }
+.current {
+    background-color: var(--highLightColor);
+}
