@@ -17,7 +17,5 @@ p, label {
 #wrapper {
     position: relative;
     min-height: 100vh;
-}
-#contentWrap {
-    padding-bottom: 5em; 
+    padding-bottom: 6em; 
 }

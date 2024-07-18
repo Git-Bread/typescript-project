@@ -1,16 +1,36 @@
 <div>
-    <label for="courseSearch">Sök Kurs:</label>
-    <input type="search" id="courseSearch">
+    <form [formGroup]="formHandle">
+        <label for="courseSearch">Sök Kurs:</label>
+        <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
+    </form>
 </div>
 <section id="courseContainer">
-    <thead>
-        <td>Kurskod:</td>
-        <td>Namn:</td>
-        <td >Progression:</td>
-    </thead>
-    <tbody *ngFor="let courseCode of content; let i = index;">
-        <td>{{content[i].courseCode}}</td>
-        <td>{{content[i].subjectCode}}</td>
-        <td>{{content[i].progression}}</td>
-    </tbody>
+    <table>
+        <thead>
+            <tr>
+                <th (click)="sort(0)">Kurskod:</th>
+                <th (click)="sort(1)">Ämneskod:</th>
+                <th (click)="sort(2)">Nivå:</th>
+                <th (click)="sort(3)">Progression:</th>
+                <th (click)="sort(4)">Kursnamn:</th>
+                <th (click)="sort(5)">Poäng:</th>
+                <th (click)="sort(6)">Instutionskod:</th>
+                <th (click)="sort(7)">Ämne:</th>
+                <th (click)="sort(8)">Syllabus:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let courseCode of content; let i = index;">
+                <td>{{content[i].courseCode}}</td>
+                <td>{{content[i].subjectCode}}</td>
+                <td>{{content[i].level}}</td>
+                <td>{{content[i].progression}}</td>
+                <td>{{content[i].courseName}}</td>
+                <td>{{content[i].points}}</td>
+                <td>{{content[i].institutionCode}}</td>
+                <td>{{content[i].subject}}</td>
+                <td><a a href="{{content[i].syllabus}}">{{content[i].syllabus}}</a></td>
+            </tr>
+        </tbody>
+    </table>
 </section>
