@@ -1,33 +1,70 @@
-div {
-    margin: auto;
-    width: 35%;
-    margin-top: 1em;
-}
 input {
     width: 100%;
     font-size: var(--fontSizeNormal);
 }
-section {
-    border: solid 1px gray;
-    width: 80%;
-    margin: auto;
-    margin-top: 1em;
+#courseContainer {
     min-height: 75vh;
     overflow: scroll;
     max-height: 100vh;
+}
+#courseWrapper {
+    border: solid 1px gray;
+    border-radius: 25px;
+    width: 80%;
+    margin: auto;
+    margin-top: 1em;
+    padding: 1em;
+    max-width: 1400px;
 }
 th {
     cursor: pointer;
     text-align: left;
     font-size: var(--fontSizeTableTop);
-    padding-left: 0.25em;
-    padding-right: 0.5em;
+    padding-right: 0.2em;
 }
 td {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+    padding-top: 0.25em;
 }
 th:hover {
     background-color: var(--highLightColor);
     cursor: pointer;
 }
+td:hover {
+    border: solid 1px black;
+}
+span {
+    margin: 0.4em;
+}
+button {
+    white-space: nowrap;
+}
+#search {
+    max-width: 80%;
+    margin: auto;
+    margin-top: 1em;
+}
+#lowerSearch {
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+}
+#lowerSearch div {
+    max-width: 50%;
+}
+#lowerSearch div select {
+    max-width: 75%;
+}
+#lowerSearch div label {
+    width: 20%;
+    padding-right: 1em;
+}
+
+@media screen and (max-width: 800px) {
+    #lowerSearch div {
+        overflow: scroll;
+    }
+    #lowerSearch div select {
+        max-width: 90%;
+    }
+}   

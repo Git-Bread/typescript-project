@@ -5,6 +5,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { Obj } from '../Obj';
 import { SearcherService } from '../services/searcher.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -31,18 +32,18 @@ export class CoursesComponent {
     this.dataHandler.getData().subscribe((data) => {
       this.content = data;
       this.contentArchive = this.content;
-    });
-    for (let index = 0; index < this.content.length; index++) {
-      let match = false;
-      for (let yndex = 0; yndex < this.subjects.length; yndex++) {
-        if (this.content[index].subject == this.subjects[yndex]) {
-          match = true;
+      for (let index = 0; index < this.content.length; index++) {
+        let match = false;
+        for (let yndex = 0; yndex < this.subjects.length; yndex++) {
+          if (this.content[index].subject == this.subjects[yndex]) {
+            match = true;
+          }
+        }
+        if (match == false) {
+          this.subjects.push(this.content[index].subject);
         }
       }
-      if (match == false) {
-        this.subjects.push(this.content[index].subject);
-      }
-    }
+    });
   }
 
   sort(num: number){

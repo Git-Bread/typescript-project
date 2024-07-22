@@ -1,46 +1,55 @@
-<div>
+<div id="search">
     <form [formGroup]="formHandle">
         <label for="courseSearch">Sök Kurs:</label>
         <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
     </form>
-    <label></label>
-    <select [(ngModel)]="options">
-        <option [ngValue]="0">Allt</option>
-        <option [ngValue]="1">Kurskod</option>
-        <option [ngValue]="2">Nivå</option>
-        <option [ngValue]="3">Progression</option>
-        <option [ngValue]="4">Kursnamn</option>
-        <option [ngValue]="5">Poäng</option>
-        <option [ngValue]="6">Ämne</option>
-    </select>
-    <select [(ngModel)]="filter" (ngModelChange)="filterSearch()">
-        <option [ngValue]="9999">Inget Filter</option>
-        <option *ngFor="let courseName of subjects; let i = index;" [ngValue]="i">{{subjects[i]}}</option>
-    </select>
+    <div id="lowerSearch">
+        <div>
+            <label for="optionsSelect">Sökläge:</label>
+            <select id="optionsSelect" [(ngModel)]="options">
+                <option [ngValue]="0">Allt</option>
+                <option [ngValue]="1">Kurskod</option>
+                <option [ngValue]="2">Nivå</option>
+                <option [ngValue]="3">Progression</option>
+                <option [ngValue]="4">Kursnamn</option>
+                <option [ngValue]="5">Poäng</option>
+                <option [ngValue]="6">Ämne</option>
+            </select>
+        </div>
+        <div>
+            <label for="filterSelect">Filter:</label>
+            <select id="filterSelect" [(ngModel)]="filter" (ngModelChange)="filterSearch()">
+                <option [ngValue]="9999">Inget Filter</option>
+                <option *ngFor="let courseName of subjects; let i = index;" [ngValue]="i">{{subjects[i]}}</option>
+            </select>    
+        </div>    
+    </div>
 </div>
-<section id="courseContainer">
-    <span>Visar 300 utav {{content.length}}</span>
-    <table>
-        <thead>
-            <tr>
-                <th (click)="sort(0)">Kurskod:</th>
-                <th (click)="sort(2)">Nivå:</th>
-                <th (click)="sort(3)">Progression:</th>
-                <th (click)="sort(4)">Kursnamn:</th>
-                <th (click)="sort(5)">Poäng:</th>
-                <th (click)="sort(7)">Ämne:</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let courseCode of content | slice:0:300; let i = index;">
-                <td>{{content[i].courseCode}}</td>
-                <td>{{content[i].level}}</td>
-                <td>{{content[i].progression}}</td>
-                <td><a a href="{{content[i].syllabus}}">{{content[i].courseName}}</a></td>
-                <td>{{content[i].points}}</td>
-                <td>{{content[i].subject}}</td>
-                <td><button (click)="add(content[i])">Lägg till</button></td>
-            </tr>
-        </tbody>
-    </table>
+<section id="courseWrapper">
+    <section id="courseContainer">
+        <span>Visar 300 utav {{content.length}}</span>
+        <table>
+            <thead>
+                <tr>
+                    <th (click)="sort(0)">Kurskod:</th>
+                    <th (click)="sort(2)">Nivå:</th>
+                    <th (click)="sort(3)">Progression:</th>
+                    <th (click)="sort(4)">Kursnamn:</th>
+                    <th (click)="sort(5)">Poäng:</th>
+                    <th (click)="sort(7)">Ämne:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let courseCode of content | slice:0:300; let i = index;">
+                    <td>{{content[i].courseCode}}</td>
+                    <td>{{content[i].level}}</td>
+                    <td>{{content[i].progression}}</td>
+                    <td><a a href="{{content[i].syllabus}}">{{content[i].courseName}}</a></td>
+                    <td>{{content[i].points}}</td>
+                    <td>{{content[i].subject}}</td>
+                    <td><button (click)="add(content[i])">Lägg till</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </section>

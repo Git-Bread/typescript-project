@@ -3,7 +3,7 @@
     --highLightColor: #f7c557;
     --fontSizeNormal: 1.4em;
     --fontSizeLarge: 3em;
-    --fontSizeTableTop: 2em;
+    --fontSizeTableTop: 1.5em;
     --fontSizeLargest: 5em;
 }
 * {
@@ -12,7 +12,7 @@
 body {
     margin: 0;
 }
-p, label, tr {
+p, label, tr, button, select {
     font-size: var(--fontSizeNormal);
 }
 #wrapper {
@@ -20,3 +20,19 @@ p, label, tr {
     min-height: 100vh;
     padding-bottom: 6em; 
 }
+@media screen and (max-width: 1400px) {
+    :root {
+        --fontSizeNormal: 1.3em;
+        --fontSizeLarge: 2em;
+        --fontSizeTableTop: 1.4em;
+        --fontSizeLargest: 3em;
+    }
+}   
+@media screen and (max-width: 800px) {
+    :root {
+        --fontSizeNormal: 0.9em;
+        --fontSizeLarge: 1.6em;
+        --fontSizeTableTop: 0.8em;
+        --fontSizeLargest: 2.4em;
+    }
+}   
