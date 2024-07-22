@@ -3,6 +3,7 @@
     --highLightColor: #f7c557;
     --fontSizeNormal: 1.4em;
     --fontSizeLarge: 3em;
+    --fontSizeTableTop: 2em;
     --fontSizeLargest: 5em;
 }
 * {
@@ -11,7 +12,7 @@
 body {
     margin: 0;
 }
-p, label {
+p, label, tr {
     font-size: var(--fontSizeNormal);
 }
 #wrapper {

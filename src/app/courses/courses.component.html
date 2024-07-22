@@ -3,33 +3,32 @@
         <label for="courseSearch">Sök Kurs:</label>
         <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
     </form>
+    <select *ngFor="let courseCode of content; let i = index;">
+        <option></option>
+    </select>
 </div>
 <section id="courseContainer">
+    <span>Visar 300 utav {{content.length}}</span>
     <table>
         <thead>
             <tr>
-                <th class="table0" (click)="sort(0)">Kurskod:</th>
-                <th class="table1" (click)="sort(1)">Ämneskod:</th>
-                <th class="table2" (click)="sort(2)">Nivå:</th>
-                <th class="table3" (click)="sort(3)">Progression:</th>
-                <th class="table4" (click)="sort(4)">Kursnamn:</th>
-                <th class="table5" (click)="sort(5)">Poäng:</th>
-                <th class="table6" (click)="sort(6)">Instutionskod:</th>
-                <th class="table7" (click)="sort(7)">Ämne:</th>
-                <th class="table8" (click)="sort(8)">Syllabus:</th>
+                <th (click)="sort(0)">Kurskod:</th>
+                <th (click)="sort(2)">Nivå:</th>
+                <th (click)="sort(3)">Progression:</th>
+                <th (click)="sort(4)">Kursnamn:</th>
+                <th (click)="sort(5)">Poäng:</th>
+                <th (click)="sort(7)">Ämne:</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let courseCode of content; let i = index;">
-                <td class="table0">{{content[i].courseCode}}</td>
-                <td class="table1">{{content[i].subjectCode}}</td>
-                <td class="table2">{{content[i].level}}</td>
-                <td class="table3">{{content[i].progression}}</td>
-                <td class="table4">{{content[i].courseName}}</td>
-                <td class="table5">{{content[i].points}}</td>
-                <td class="table6">{{content[i].institutionCode}}</td>
-                <td class="table7">{{content[i].subject}}</td>
-                <td class="table8"><a a href="{{content[i].syllabus}}">{{content[i].syllabus}}</a></td>
+            <tr *ngFor="let courseCode of content | slice:0:300; let i = index;">
+                <td>{{content[i].courseCode}}</td>
+                <td>{{content[i].level}}</td>
+                <td>{{content[i].progression}}</td>
+                <td><a a href="{{content[i].syllabus}}">{{content[i].courseName}}</a></td>
+                <td>{{content[i].points}}</td>
+                <td>{{content[i].subject}}</td>
+                <td><button (click)="add(content[i])">Lägg till</button></td>
             </tr>
         </tbody>
     </table>

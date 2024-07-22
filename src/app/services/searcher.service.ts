@@ -11,8 +11,7 @@ export class SearcherService {
     let searchSort = obj;
     console.log(search);
     searchSort = searchSort.filter((a) => 
-    a.courseCode.toLowerCase().includes(search.toLowerCase()) || 
-    a.subjectCode.toLowerCase().includes(search.toLowerCase()) || 
+    a.courseCode.toLowerCase().includes(search.toLowerCase()) ||  
     a.level.toLowerCase().includes(search.toLowerCase()) ||
     a.progression.toLowerCase().includes(search.toLowerCase()) ||
     a.courseName.toLowerCase().includes(search.toLowerCase()) ||

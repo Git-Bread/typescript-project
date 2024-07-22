@@ -16,9 +16,18 @@ section {
     overflow: scroll;
     max-height: 100vh;
 }
-.expandedView {
-    display: none;
+th {
+    cursor: pointer;
+    text-align: left;
+    font-size: var(--fontSizeTableTop);
+    padding-left: 0.25em;
+    padding-right: 0.5em;
 }
-.advancedView {
-    display: none;
+td {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+}
+th:hover {
+    background-color: var(--highLightColor);
+    cursor: pointer;
 }
