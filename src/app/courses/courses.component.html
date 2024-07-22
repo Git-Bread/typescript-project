@@ -3,8 +3,18 @@
         <label for="courseSearch">Sök Kurs:</label>
         <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
     </form>
-    <select *ngFor="let courseCode of content; let i = index;">
-        <option></option>
+    <select [(ngModel)]="options">
+        <option [ngValue]="0">Allt</option>
+        <option [ngValue]="1">Kurskod</option>
+        <option [ngValue]="2">Nivå</option>
+        <option [ngValue]="3">Progression</option>
+        <option [ngValue]="4">Kursnamn</option>
+        <option [ngValue]="5">Poäng</option>
+        <option [ngValue]="6">Ämne</option>
+    </select>
+    <select [(ngModel)]="filter" (ngModelChange)="filterSearch()">
+        <option [ngValue]="9999">Inget Filter</option>
+        <option *ngFor="let courseName of subjects; let i = index;" [ngValue]="i">{{subjects[i]}}</option>
     </select>
 </div>
 <section id="courseContainer">
