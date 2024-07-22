@@ -3,6 +3,7 @@
         <label for="courseSearch">Sök Kurs:</label>
         <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
     </form>
+    <label></label>
     <select [(ngModel)]="options">
         <option [ngValue]="0">Allt</option>
         <option [ngValue]="1">Kurskod</option>

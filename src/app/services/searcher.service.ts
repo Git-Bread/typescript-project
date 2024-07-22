@@ -9,16 +9,12 @@ export class SearcherService {
   constructor() { }
   searchSort(search : string, obj: Obj[], mode: number, filtered: boolean, altObj: Obj[]) {
     let searchSort;
-    console.log(filtered);
     if (!filtered) {
       searchSort = obj; 
-      console.log("normal search");
     }
     else {
       searchSort = altObj;
-      console.log("altSearch");
     }
-    console.log(searchSort);
 
     switch(mode) {
       case 0:

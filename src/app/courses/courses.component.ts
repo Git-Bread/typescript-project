@@ -47,18 +47,14 @@ export class CoursesComponent {
 
   sort(num: number){
     this.content = this.sorter.simpleSort(num, this.content);
-    console.log("ran sort");
   }
 
   search(){
-    console.log(this.filter);
     if (this.filter != 9999) {
-      console.log(this.filter)
       this.content = this.filteredItems;
       this.content = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, this.options, true, this.content);
     }
     else {
-      console.log("ran");
       this.content = this.contentArchive;
       this.content = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, this.options, false, this.content);
     }
@@ -71,7 +67,6 @@ export class CoursesComponent {
   filterSearch() {
     this.filteredItems = [];
     this.content = this.contentArchive;
-    console.log(this.content.length);
     for (let i = 0; i < this.content.length; i++) {
       if (this.content[i].subject == this.subjects[this.filter]) {
         this.filteredItems.push(this.content[i]);
