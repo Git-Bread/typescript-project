@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { dataFetcher } from "../services/data-fetcher.service";
-import { SorterService } from '../services/sorter.service';
+import { afterNextRender, Component } from '@angular/core';
+import { dataFetcher } from "../../services/data-fetcher.service"
+import { SorterService } from '../../services/sorter.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Obj } from '../Obj';
-import { SearcherService } from '../services/searcher.service';
-import { Subject } from 'rxjs';
+import { Obj } from '../../assets/Obj';
+import { SearcherService } from '../../services/searcher.service';
+import { LocalStorageBossService } from "../../services/local-storage-boss.service"
 
 @Component({
   selector: 'app-courses',
@@ -21,17 +21,35 @@ export class CoursesComponent {
   options: number = 0;
   subjects: string[] = [];
   filter: number = 9999;
+  mobile: boolean = false;
+  storedItems: Obj[] = []; 
 
+  //form setup
   formHandle = new FormGroup({
     input: new FormControl("", Validators.required)
   })
   
-  constructor(private dataHandler : dataFetcher, private sorter : SorterService, private searcher : SearcherService) {}
+  constructor(private dataHandler : dataFetcher, private sorter : SorterService, private searcher : SearcherService, private localStorageBoss : LocalStorageBossService) {
 
+    //depreciated tech, implemented to be able to split one row into two for better mobile compatability, will not work unless the html table structure is thrown out the window.
+    //since rows seem to be hardlocked, pity i wasted some time ;(
+    //kept it for proof of concept, when worked togheter with *ngIf you can dynamicly filter or change html
+    afterNextRender(() => {
+      if (window.screen.width < 600) { // 768px portrait
+        this.mobile = true;
+        console.log('window.innerHeight', window.innerHeight);
+      }
+    })
+  }
+
+  //initial data import and category identification
   ngOnInit() {
+    //gets the data via datahandler service
     this.dataHandler.getData().subscribe((data) => {
       this.content = data;
       this.contentArchive = this.content;
+
+      //runs when data is fetched to get all categories in separate array, not the most elegant but im out of ideas
       for (let index = 0; index < this.content.length; index++) {
         let match = false;
         for (let yndex = 0; yndex < this.subjects.length; yndex++) {
@@ -46,13 +64,19 @@ export class CoursesComponent {
     });
   }
 
+  //calls the sorting service on searchbar change
   sort(num: number){
     this.content = this.sorter.simpleSort(num, this.content);
   }
 
+  //calls the search service, it also need to know if a filter is being used to narrow down the search. The default value of "no-filter" is 9999 since i had trouble getting it to
+  //0 without messing up the for loop to populate the table. 
   search(){
+    //makes current content equal to inital content or filtered content to reset everything so that the search dosent exclude previus "non-searches"
     if (this.filter != 9999) {
       this.content = this.filteredItems;
+
+      //searchtext - initial data - option number for sort filters - filtered/no filter - current data
       this.content = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, this.options, true, this.content);
     }
     else {
@@ -61,10 +85,7 @@ export class CoursesComponent {
     }
   }
 
-  add(obj: any) {
-    console.log(obj);
-  }
-
+  //filters the current table and returns the filtered items
   filterSearch() {
     this.filteredItems = [];
     this.content = this.contentArchive;
@@ -76,4 +97,17 @@ export class CoursesComponent {
     this.content = this.filteredItems;
   }
 
+  //adds to local host
+  localAdd(obj : Obj) {
+    this.localStorageBoss.add(obj);
+  }
+
+  //removes from localhost
+  localRemove(obj : Obj) {
+    this.localStorageBoss.remove(obj);
+  }
+
+  getStorage() {
+    this.localStorageBoss.sync();
+  }
 }

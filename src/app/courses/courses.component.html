@@ -27,14 +27,15 @@
 </div>
 <section id="courseWrapper">
     <section id="courseContainer">
-        <span>Visar 300 utav {{content.length}}</span>
+        <span *ngIf="content.length > 300; else shortList">Visar 300 utav {{content.length}}</span>
+        <ng-template #shortList>Visar {{content.length}} utav {{content.length}}</ng-template>
         <table>
             <thead>
                 <tr>
                     <th (click)="sort(0)">Kurskod:</th>
                     <th (click)="sort(2)">Nivå:</th>
                     <th (click)="sort(3)">Progression:</th>
-                    <th (click)="sort(4)">Kursnamn:</th>
+                    <th (click)="sort(4)" colspan="2">Kursnamn:</th>
                     <th (click)="sort(5)">Poäng:</th>
                     <th (click)="sort(7)">Ämne:</th>
                 </tr>
@@ -47,7 +48,7 @@
                     <td><a a href="{{content[i].syllabus}}">{{content[i].courseName}}</a></td>
                     <td>{{content[i].points}}</td>
                     <td>{{content[i].subject}}</td>
-                    <td><button (click)="add(content[i])">Lägg till</button></td>
+                    <td><button (click)="localAdd(content[i])">Lägg till</button></td>
                 </tr>
             </tbody>
         </table>
