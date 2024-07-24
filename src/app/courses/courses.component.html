@@ -48,7 +48,12 @@
                     <td><a a href="{{content[i].syllabus}}">{{content[i].courseName}}</a></td>
                     <td>{{content[i].points}}</td>
                     <td>{{content[i].subject}}</td>
-                    <td><button (click)="localAdd(content[i])">Lägg till</button></td>
+                    @if (content[i].match) {
+                        <td><button (click)="localRemove(content[i])">Ta Bort</button></td>
+                    }
+                    @else {
+                        <td><button (click)="localAdd(content[i])">Lägg till</button></td>
+                    }
                 </tr>
             </tbody>
         </table>

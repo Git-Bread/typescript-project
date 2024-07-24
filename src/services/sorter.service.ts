@@ -4,6 +4,8 @@ import { Obj } from '../assets/Obj';
 @Injectable({
   providedIn: 'root'
 })
+
+//sorter for sorting columns
 export class SorterService {
   constructor() { }
   simpleSort(val : number, obj: Obj[]) {

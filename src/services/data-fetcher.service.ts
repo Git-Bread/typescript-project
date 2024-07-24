@@ -7,6 +7,7 @@ import { Obj } from '../assets/Obj';
   providedIn: 'root',
 })
 
+//gets the data from the string and formats it into a object array
 export class dataFetcher {
   constructor(private http: HttpClient) { }
 

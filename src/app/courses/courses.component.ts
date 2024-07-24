@@ -22,7 +22,7 @@ export class CoursesComponent {
   subjects: string[] = [];
   filter: number = 9999;
   mobile: boolean = false;
-  storedItems: Obj[] = []; 
+  storedMatches: string[] = [];
 
   //form setup
   formHandle = new FormGroup({
@@ -61,6 +61,10 @@ export class CoursesComponent {
           this.subjects.push(this.content[index].subject);
         }
       }
+
+      //setup for localstorage
+      this.localStorageBoss.getCurrent();
+      this.getStorage();
     });
   }
 
@@ -100,14 +104,32 @@ export class CoursesComponent {
   //adds to local host
   localAdd(obj : Obj) {
     this.localStorageBoss.add(obj);
+    this.getStorage();
   }
 
   //removes from localhost
   localRemove(obj : Obj) {
     this.localStorageBoss.remove(obj);
+    this.getStorage();
   }
 
+  //gets current local storage entries and finds them in the content list and changes their property to marked so the html can distinguish them
   getStorage() {
-    this.localStorageBoss.sync();
+    let storedItems: Obj[] = []; 
+    storedItems = this.localStorageBoss.sync();
+    for (let index = 0; index < this.content.length; index++) {
+      let match = false;
+      for (let yndex = 0; yndex < storedItems.length; yndex++) {
+        if (this.content[index].courseCode == storedItems[yndex].courseCode) {
+          match = true;
+        }
+      }
+      if (match == true) {
+        this.content[index].match = true;
+      }
+      else {
+        this.content[index].match = false;
+      }
+    }
   }
 }

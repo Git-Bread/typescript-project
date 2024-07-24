@@ -46,11 +46,12 @@ button {
 #lowerSearch {
     margin-top: 0.5em;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     max-width: 100%;
 }
 #lowerSearch div {
     max-width: 50%;
+    margin-right: 1em;
 }
 #lowerSearch div select {
     max-width: 75%;

@@ -7,5 +7,6 @@ export interface Obj {
     points: number,
     institutionCode: string,
     subject: string,
-    syllabus: string
+    syllabus: string,
+    match: boolean
 };
