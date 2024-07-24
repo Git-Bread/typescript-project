@@ -25,7 +25,7 @@ export class SchemaComponent {
 
   constructor(private localStorageBoss : LocalStorageBossService, private searcher : SearcherService, private sorter : SorterService, private dataHandler : dataFetcher) {}
 
-
+  //loads the localstorage
   ngOnInit() {
     this.localStorageBoss.getCurrent();
     this.savedCourses = this.localStorageBoss.sync(); 
@@ -34,10 +34,6 @@ export class SchemaComponent {
   search() {
     this.savedCourses = this.contentArchive;
     this.savedCourses = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, 0, false, this.contentArchive);
-  }
-
-  remove(obj: Obj) {
-    this.localStorageBoss.remove(obj);
   }
 
   sort(num: number){
