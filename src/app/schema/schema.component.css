@@ -1,0 +1,64 @@
+form div{
+    margin: auto;
+    max-width: clamp(30%, 1em, 60%);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+label {
+    margin-right: 0.5em;
+}
+input {
+    width: 80%;
+}
+#schemaWrapper {
+    margin: auto;
+    width: 80%;
+    border: solid 1px black;
+    padding: 1em;
+    border-radius: 25px;
+}
+#schemaContainer {
+    display: flex;
+    flex-direction: column;
+}
+#head {
+    display: grid;
+    grid-template-columns: 0.6fr 0.6fr 0.6fr 3fr;
+    padding-bottom: 2em;
+}
+.tableBody {
+    display: grid;
+    grid-template-columns: 0.6fr 0.6fr 0.6fr 2fr;
+}
+.tableContainer {
+    margin-bottom: 1em;
+    border: solid 1px black;
+    padding: 0.2em;
+}
+p {
+    padding: 1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    border: solid 1px grey;
+}
+#head p:hover {
+    background-color: var(--highLightColor);
+    cursor: pointer;
+}
+@media screen and (max-width: 1000px) {
+    #head {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-bottom: 2em;
+    }
+    .tableBody {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    p {
+        padding: 0.1em;
+    }
+    #schemaWrapper {
+        width: 90%;
+    }
+}   

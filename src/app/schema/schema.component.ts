@@ -5,6 +5,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { SearcherService } from '../../services/searcher.service';
 import { SorterService } from '../../services/sorter.service';
+import { dataFetcher } from '../../services/data-fetcher.service';
 
 @Component({
   selector: 'app-schema',
@@ -22,11 +23,12 @@ export class SchemaComponent {
     input: new FormControl("", Validators.required)
   })
 
-  constructor(private localStorageBoss : LocalStorageBossService, private searcher : SearcherService, private sorter : SorterService) {}
+  constructor(private localStorageBoss : LocalStorageBossService, private searcher : SearcherService, private sorter : SorterService, private dataHandler : dataFetcher) {}
 
 
   ngOnInit() {
-      this.savedCourses = this.localStorageBoss.sync(); 
+    this.localStorageBoss.getCurrent();
+    this.savedCourses = this.localStorageBoss.sync(); 
   }
 
   search() {

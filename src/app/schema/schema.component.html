@@ -1,31 +1,37 @@
 <form [formGroup]="formHandle">
-    <label for="courseSearch">Sök Kurs:</label>
-    <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
+    <div>
+        <label for="courseSearch">Sök Kurs:</label>
+        <input type="search" id="courseSearch" formControlName="input" (input)="search()" value={{formHandle.value.input}}>
+    </div>
 </form>
-<section id="courseWrapper">
-    <section id="courseContainer">
-        <span *ngIf="savedCourses.length > 300; else shortList">Visar 300 utav {{savedCourses.length}}</span>
-        <ng-template #shortList>Visar {{savedCourses.length}} utav {{savedCourses.length}}</ng-template>
-        <content>
-            <div id="head">
-                <p (click)="sort(0)">Kurskod:</p>
-                <p (click)="sort(2)">Nivå:</p>
-                <p (click)="sort(3)">Progression:</p>
-                <p (click)="sort(4)" colspan="2">Kursnamn:</p>
-                <p (click)="sort(5)">Poäng:</p>
-                <p (click)="sort(7)">Ämne:</p>
-            </div>
-            <div id="tableBody">
-                <div class="tableContent" *ngFor="let courseCode of savedCourses | slice:0:300; let i = index;">
-                    <p>{{savedCourses[i].courseCode}}</p>
-                    <p>{{savedCourses[i].level}}</p>
-                    <p>{{savedCourses[i].progression}}</p>
-                    <p><a a href="{{savedCourses[i].syllabus}}">{{savedCourses[i].courseName}}</a></p>
-                    <p>{{savedCourses[i].points}}</p>
-                    <p>{{savedCourses[i].subject}}</p>
+<section id="schemaWrapper">
+    <span *ngIf="savedCourses.length > 300; else shortList">Visar 300 utav {{savedCourses.length}}</span>
+    <ng-template #shortList>Visar {{savedCourses.length}} utav {{savedCourses.length}}</ng-template>
+    <section id="schemaContainer">
+        <div id="head">
+            <p (click)="sort(0)">Kurskod:</p>
+            <p (click)="sort(3)">Progression:</p>
+            <p (click)="sort(5)">Poäng:</p>
+            <p (click)="sort(4)">Kursnamn:</p>
+            <p (click)="sort(1)">Ämneskod:</p>
+            <p (click)="sort(2)">Nivå:</p>
+            <p (click)="sort(6)">institutionskod:</p>
+            <p (click)="sort(7)">Ämne:</p>
+        </div>
+            @for(courseCode of savedCourses | slice:0:300; ; track courseCode; let i = $index) {
+                <div class="tableContainer">
+                    <div class="tableBody">
+                        <p>{{savedCourses[i].courseCode}}</p>
+                        <p>{{savedCourses[i].progression}}</p>
+                        <p>{{savedCourses[i].points}}</p>
+                        <p><a a href="{{savedCourses[i].syllabus}}">{{savedCourses[i].courseName}}</a></p>
+                        <p>{{savedCourses[i].subjectCode}}</p>
+                        <p>{{savedCourses[i].level}}</p>
+                        <p>{{savedCourses[i].institutionCode}}</p>
+                        <p>{{savedCourses[i].subject}}</p>
+                    </div>
                     <p><button (click)="localRemove(savedCourses[i])">Ta Bort</button></p>
                 </div>
-            </div>
-        </content>
+            }
     </section>
 </section>
