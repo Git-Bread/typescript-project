@@ -39,7 +39,7 @@ export class SchemaComponent {
     this.savedCourses = this.contentArchive;
     console.log(this.formHandle.value.input!);
     console.log(this.savedCourses);
-    this.savedCourses = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, 0, false, this.contentArchive);
+    this.savedCourses = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, 7, false, this.contentArchive);
     console.log(this.savedCourses);
   }
 

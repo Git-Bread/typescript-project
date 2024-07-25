@@ -21,6 +21,7 @@ export class SearcherService {
     }
 
     console.log(searchSort);
+    console.log(mode);
 
     //long ugly switch which alot of ||
     switch(mode) {
@@ -56,6 +57,17 @@ export class SearcherService {
       case 6:
         searchSort = searchSort?.filter((a) => 
           a.subject.toLowerCase().includes(search.toLowerCase()));
+        break;
+      case 7: 
+      searchSort = searchSort?.filter((a) => 
+        a.courseCode.toLowerCase().includes(search.toLowerCase()) || 
+        a.subjectCode.toLowerCase().includes(search.toLowerCase()) ||
+        a.level.toLowerCase().includes(search.toLowerCase()) ||
+        a.progression.toLowerCase().includes(search.toLowerCase()) ||
+        a.courseName.toLowerCase().includes(search.toLowerCase()) ||
+        a.points.toString().includes(search.toLowerCase()) ||
+        a.institutionCode.toLowerCase().includes(search.toLowerCase()) ||
+        a.subject.toLowerCase().includes(search.toLowerCase()));
         break;
     }
     return searchSort;
