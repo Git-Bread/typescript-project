@@ -42,10 +42,11 @@ export class CoursesComponent {
     })
   }
 
+  //due to loading shenanigans
   ngAfterContentInit() {
     setTimeout(() => {
       this.getStorage();
-    }, 100);
+    }, 300);
   }
 
 

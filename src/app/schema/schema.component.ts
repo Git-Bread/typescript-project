@@ -17,6 +17,7 @@ import { dataFetcher } from '../../services/data-fetcher.service';
 export class SchemaComponent {
   savedCourses: Obj[] = [];
   contentArchive: Obj[] = [];
+  value: number = 0;
 
   //form setup
   formHandle = new FormGroup({
@@ -25,9 +26,12 @@ export class SchemaComponent {
 
   constructor(private localStorageBoss : LocalStorageBossService, private searcher : SearcherService, private sorter : SorterService, private dataHandler : dataFetcher) {}
 
-  //loads the localstorage
+  //loads the localstorage, goddamn timeout again >;(
   ngAfterContentInit() {
-    this.savedCourses = this.localStorageBoss.sync(); 
+    setTimeout(() => {  
+      this.savedCourses = this.localStorageBoss.sync(); 
+      this.totalValue();
+    }, 200)
   }
 
   search() {
@@ -43,5 +47,12 @@ export class SchemaComponent {
   localRemove(obj : Obj) {
     this.localStorageBoss.remove(obj);
     this.savedCourses = this.localStorageBoss.sync(); 
+  }
+
+  totalValue() {
+    for (let index = 0; index < this.savedCourses.length; index++) {
+      this.value += this.savedCourses[index].points;
+      console.log(this.value);
+    }
   }
 }

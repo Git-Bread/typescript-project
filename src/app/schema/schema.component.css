@@ -45,6 +45,10 @@ p {
     background-color: var(--highLightColor);
     cursor: pointer;
 }
+#topInfo {
+    display: flex;
+    justify-content: space-between;
+}
 @media screen and (max-width: 1000px) {
     #head {
         display: grid;

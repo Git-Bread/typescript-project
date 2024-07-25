@@ -5,8 +5,12 @@
     </div>
 </form>
 <section id="schemaWrapper">
-    <span *ngIf="savedCourses.length > 300; else shortList">Visar 300 utav {{savedCourses.length}}</span>
-    <ng-template #shortList>Visar {{savedCourses.length}} utav {{savedCourses.length}}</ng-template>
+    <div id="topInfo">
+        <span *ngIf="savedCourses.length > 300; else shortList">Visar 300 utav {{savedCourses.length}}</span>
+        <span>Antal kurser du har valt: {{savedCourses.length}}</span>
+        <span>Totala antalet poäng ifrån kurserna: {{value}}</span>
+    </div>
+    <ng-template #shortList><span>Visar {{savedCourses.length}} utav {{savedCourses.length}}</span></ng-template>
     <section id="schemaContainer">
         <div id="head">
             <p (click)="sort(0)">Kurskod:</p>
@@ -18,7 +22,7 @@
             <p (click)="sort(6)">institutionskod:</p>
             <p (click)="sort(7)">Ämne:</p>
         </div>
-            @for(courseCode of savedCourses | slice:0:300; ; track courseCode; let i = $index) {
+            @for(courseCode of savedCourses | slice:0:300; track courseCode; let i = $index) {
                 <div class="tableContainer">
                     <div class="tableBody">
                         <p>{{savedCourses[i].courseCode}}</p>

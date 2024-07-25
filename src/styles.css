@@ -12,7 +12,7 @@
 body {
     margin: 0;
 }
-p, label, tr, button, select, input {
+p, label, tr, button, select, input, span {
     font-size: var(--fontSizeNormal);
 }
 #wrapper {
