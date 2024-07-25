@@ -30,13 +30,17 @@ export class SchemaComponent {
   ngAfterContentInit() {
     setTimeout(() => {  
       this.savedCourses = this.localStorageBoss.sync(); 
+      this.contentArchive = this.savedCourses;
       this.totalValue();
     }, 200)
   }
 
   search() {
     this.savedCourses = this.contentArchive;
+    console.log(this.formHandle.value.input!);
+    console.log(this.savedCourses);
     this.savedCourses = this.searcher.searchSort(this.formHandle.value.input!,  this.contentArchive, 0, false, this.contentArchive);
+    console.log(this.savedCourses);
   }
 
   sort(num: number){
@@ -47,6 +51,7 @@ export class SchemaComponent {
   localRemove(obj : Obj) {
     this.localStorageBoss.remove(obj);
     this.savedCourses = this.localStorageBoss.sync(); 
+    this.contentArchive = this.savedCourses;
   }
 
   totalValue() {

@@ -20,6 +20,8 @@ export class SearcherService {
       searchSort = altObj;
     }
 
+    console.log(searchSort);
+
     //long ugly switch which alot of ||
     switch(mode) {
       case 0:
