@@ -20,6 +20,10 @@ export class SearcherService {
       searchSort = altObj;
     }
 
+    if (!search) {
+      return searchSort;
+    }
+
     console.log(searchSort);
     console.log(mode);
 
