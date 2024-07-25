@@ -26,8 +26,7 @@ export class SchemaComponent {
   constructor(private localStorageBoss : LocalStorageBossService, private searcher : SearcherService, private sorter : SorterService, private dataHandler : dataFetcher) {}
 
   //loads the localstorage
-  ngOnInit() {
-    this.localStorageBoss.getCurrent();
+  ngAfterContentInit() {
     this.savedCourses = this.localStorageBoss.sync(); 
   }
 

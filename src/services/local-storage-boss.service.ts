@@ -13,8 +13,9 @@ export class LocalStorageBossService {
   constructor() {
     afterNextRender(() => {
       this.getCurrent();
-    });
+    })
   }
+  
 
   //gets current content
   getCurrent() {
@@ -33,7 +34,6 @@ export class LocalStorageBossService {
 
   //Sends all entries
   sync() {
-    console.log(this.currentItems);
     return this.currentItems;
   }
 
