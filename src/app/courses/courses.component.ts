@@ -39,6 +39,7 @@ export class CoursesComponent {
         this.mobile = true;
         console.log('window.innerHeight', window.innerHeight);
       }
+      this.getStorage();
     })
   }
 
@@ -62,9 +63,7 @@ export class CoursesComponent {
         }
       }
 
-      //setup for localstorage
-      this.localStorageBoss.getCurrent();
-      this.getStorage();
+     
     });
   }
 
@@ -115,8 +114,10 @@ export class CoursesComponent {
 
   //gets current local storage entries and finds them in the content list and changes their property to marked so the html can distinguish them
   getStorage() {
+    console.log("ran");
     let storedItems: Obj[] = []; 
     storedItems = this.localStorageBoss.sync();
+    console.log(storedItems);
     for (let index = 0; index < this.content.length; index++) {
       let match = false;
       for (let yndex = 0; yndex < storedItems.length; yndex++) {

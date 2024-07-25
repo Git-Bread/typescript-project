@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { afterNextRender, Injectable } from '@angular/core';
 import { Obj } from '../assets/Obj';
 
 @Injectable({
@@ -8,16 +8,21 @@ import { Obj } from '../assets/Obj';
 //handles all local storage interactions
 export class LocalStorageBossService {
 
-  constructor() { }
   currentItems: Obj[] = [];
+
+  constructor() {
+    afterNextRender(() => {
+      this.getCurrent();
+    });
+  }
 
   //gets current content
   getCurrent() {
-    if (localStorage.getItem("data")) {
-      let raw: string = localStorage.getItem("data")!;
-      this.currentItems = JSON.parse(raw); 
-    }
-    console.log(this.currentItems);
+      if (localStorage.getItem("data")) {
+        let raw: string = localStorage.getItem("data")!;
+        this.currentItems = JSON.parse(raw); 
+      }
+      console.log(this.currentItems);
   }
 
   //edits the saved entries
@@ -28,6 +33,7 @@ export class LocalStorageBossService {
 
   //Sends all entries
   sync() {
+    console.log(this.currentItems);
     return this.currentItems;
   }
 
